@@ -110,24 +110,6 @@ TARGET_HAS_FOD := true
 PRODUCT_PACKAGES += \
     libprotobuf-cpp-full-vendorcompat
 
-# GPU Firmware
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/gpu/a612_rgmu.bin:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/firmware/a612_rgmu.bin \
-    $(LOCAL_PATH)/prebuilt/gpu/a612_zap.b00:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/firmware/a612_zap.b00 \
-    $(LOCAL_PATH)/prebuilt/gpu/a612_zap.b01:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/firmware/a612_zap.b01 \
-    $(LOCAL_PATH)/prebuilt/gpu/a612_zap.b02:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/firmware/a612_zap.b02 \
-    $(LOCAL_PATH)/prebuilt/gpu/a612_zap.elf:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/firmware/a612_zap.elf \
-    $(LOCAL_PATH)/prebuilt/gpu/a612_zap.mdt:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/firmware/a612_zap.mdt \
-    $(LOCAL_PATH)/prebuilt/gpu/a615_zap.b00:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/firmware/a615_zap.b00 \
-    $(LOCAL_PATH)/prebuilt/gpu/a615_zap.b01:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/firmware/a615_zap.b01 \
-    $(LOCAL_PATH)/prebuilt/gpu/a615_zap.b02:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/firmware/a615_zap.b02 \
-    $(LOCAL_PATH)/prebuilt/gpu/a615_zap.elf:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/firmware/a615_zap.elf \
-    $(LOCAL_PATH)/prebuilt/gpu/a615_zap.mdt:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/firmware/a615_zap.mdt \
-    $(LOCAL_PATH)/prebuilt/gpu/a618_gmu.bin:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/firmware/a618_gmu.bin \
-    $(LOCAL_PATH)/prebuilt/gpu/a630_gmu.bin:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/firmware/a630_gmu.bin \
-    $(LOCAL_PATH)/prebuilt/gpu/a630_sqe.fw:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/firmware/a630_sqe.fw \
-    $(LOCAL_PATH)/prebuilt/gpu/a640_gmu.bin:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/firmware/a640_gmu.bin
-
 # FM
 PRODUCT_PACKAGES += \
     FM2 \

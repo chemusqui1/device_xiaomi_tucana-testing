@@ -121,11 +121,47 @@ system_ext/lib64/vendor.qti.gnss@2.1.so
 system_ext/lib64/vendor.qti.gnss@3.0.so
 system_ext/lib64/vendor.qti.gnss@4.0.so
 
-# HotwordEnrollment
--product/priv-app/HotwordEnrollmentOKGoogleHEXAGON/HotwordEnrollmentOKGoogleHEXAGON.apk
--product/priv-app/HotwordEnrollmentXGoogleHEXAGON/HotwordEnrollmentXGoogleHEXAGON.apk
-system_ext/etc/permissions/com.android.hotwordenrollment.common.util.xml
-system_ext/framework/com.android.hotwordenrollment.common.util.jar
+# Kernel modules
+vendor/lib/modules/audio_adsp_loader.ko:product/vendor_overlay/30/lib/modules/audio_adsp_loader.ko
+vendor/lib/modules/audio_apr.ko:product/vendor_overlay/30/lib/modules/audio_apr.ko
+vendor/lib/modules/audio_aw882xx.ko:product/vendor_overlay/30/lib/modules/audio_aw882xx.ko
+vendor/lib/modules/audio_bolero_cdc.ko:product/vendor_overlay/30/lib/modules/audio_bolero_cdc.ko
+vendor/lib/modules/audio_hdmi.ko:product/vendor_overlay/30/lib/modules/audio_hdmi.ko
+vendor/lib/modules/audio_machine_talos.ko:product/vendor_overlay/30/lib/modules/audio_machine_talos.ko
+vendor/lib/modules/audio_mbhc.ko:product/vendor_overlay/30/lib/modules/audio_mbhc.ko
+vendor/lib/modules/audio_native.ko:product/vendor_overlay/30/lib/modules/audio_native.ko
+vendor/lib/modules/audio_pinctrl_lpi.ko:product/vendor_overlay/30/lib/modules/audio_pinctrl_lpi.ko
+vendor/lib/modules/audio_pinctrl_wcd.ko:product/vendor_overlay/30/lib/modules/audio_pinctrl_wcd.ko
+vendor/lib/modules/audio_platform.ko:product/vendor_overlay/30/lib/modules/audio_platform.ko
+vendor/lib/modules/audio_q6_notifier.ko:product/vendor_overlay/30/lib/modules/audio_q6_notifier.ko
+vendor/lib/modules/audio_q6_pdr.ko:product/vendor_overlay/30/lib/modules/audio_q6_pdr.ko
+vendor/lib/modules/audio_q6.ko:product/vendor_overlay/30/lib/modules/audio_q6.ko
+vendor/lib/modules/audio_rx_macro.ko:product/vendor_overlay/30/lib/modules/audio_rx_macro.ko
+vendor/lib/modules/audio_snd_event.ko:product/vendor_overlay/30/lib/modules/audio_snd_event.ko
+vendor/lib/modules/audio_stub.ko:product/vendor_overlay/30/lib/modules/audio_stub.ko
+vendor/lib/modules/audio_swr_ctrl.ko:product/vendor_overlay/30/lib/modules/audio_swr_ctrl.ko
+vendor/lib/modules/audio_swr.ko:product/vendor_overlay/30/lib/modules/audio_swr.ko
+vendor/lib/modules/audio_tfa98xx.ko:product/vendor_overlay/30/lib/modules/audio_tfa98xx.ko
+vendor/lib/modules/audio_tx_macro.ko:product/vendor_overlay/30/lib/modules/audio_tx_macro.ko
+vendor/lib/modules/audio_usf.ko:product/vendor_overlay/30/lib/modules/audio_usf.ko
+vendor/lib/modules/audio_va_macro.ko:product/vendor_overlay/30/lib/modules/audio_va_macro.ko
+vendor/lib/modules/audio_wcd_core.ko:product/vendor_overlay/30/lib/modules/audio_wcd_core.ko
+vendor/lib/modules/audio_wcd_spi.ko:product/vendor_overlay/30/lib/modules/audio_wcd_spi.ko
+vendor/lib/modules/audio_wcd9xxx.ko:product/vendor_overlay/30/lib/modules/audio_wcd9xxx.ko
+vendor/lib/modules/audio_wcd934x.ko:product/vendor_overlay/30/lib/modules/audio_wcd934x.ko
+vendor/lib/modules/audio_wcd937x_slave.ko:product/vendor_overlay/30/lib/modules/audio_wcd937x_slave.ko
+vendor/lib/modules/audio_wcd937x.ko:product/vendor_overlay/30/lib/modules/audio_wcd937x.ko
+vendor/lib/modules/audio_wglink.ko:product/vendor_overlay/30/lib/modules/audio_wglink.ko
+vendor/lib/modules/audio_wsa_macro.ko:product/vendor_overlay/30/lib/modules/audio_wsa_macro.ko
+vendor/lib/modules/audio_wsa881x.ko:product/vendor_overlay/30/lib/modules/audio_wsa881x.ko
+vendor/lib/modules/exfat.ko:product/vendor_overlay/30/lib/modules/exfat.ko
+vendor/lib/modules/modules.alias:product/vendor_overlay/30/lib/modules/modules.alias
+vendor/lib/modules/modules.dep:product/vendor_overlay/30/lib/modules/modules.dep
+vendor/lib/modules/modules.load:product/vendor_overlay/30/lib/modules/modules.load
+vendor/lib/modules/modules.softdep:product/vendor_overlay/30/lib/modules/modules.softdep
+vendor/lib/modules/mpq-adapter.ko:product/vendor_overlay/30/lib/modules/mpq-adapter.ko
+vendor/lib/modules/mpq-dmx-hw-plugin.ko:product/vendor_overlay/30/lib/modules/mpq-dmx-hw-plugin.ko
+vendor/lib/modules/qca_cld3_wlan.ko:product/vendor_overlay/30/lib/modules/qca_cld3_wlan.ko
 
 # Latency
 -system_ext/framework/vendor.qti.hardware.data.latency-V1.0-java.jar
@@ -175,61 +211,40 @@ system_ext/etc/permissions/qti_libpermissions.xml
 system_ext/etc/permissions/qti_permissions.xml
 
 # Radio
-etc/permissions/privapp-permissions-qti.xml
-etc/sysconfig/qti_whitelist.xml
+-system_ext/app/DeviceInfo/DeviceInfo.apk
+-system_ext/app/QtiTelephonyService/QtiTelephonyService.apk
 -system_ext/app/datastatusnotification/datastatusnotification.apk
 -system_ext/app/embms/embms.apk
--system_ext/app/QtiTelephonyService/QtiTelephonyService.apk
+-system_ext/priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
+system_ext/etc/permissions/telephony_system-ext_privapp-permissions-qti.xml
 system_ext/etc/permissions/embms.xml
 system_ext/etc/permissions/qcrilhook.xml
 system_ext/etc/permissions/telephonyservice.xml
--system_ext/framework/embmslibrary.jar
--system_ext/framework/qcrilhook.jar
--system_ext/framework/qti-telephony-common.jar
--system_ext/priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
+system_ext/framework/embmslibrary.jar
+system_ext/framework/qcrilhook.jar
+
+# Telephony - from smali edit: https://gist.github.com/PIPIPIG233666/72806386c8b93729ce7f2b2c263d8889
+system_ext/framework/qti-telephony-common.jar|7a3f1fa141520e83e58d4afc6eebfc4f38dc9f27
 
 # Radio-IMS
 system_ext/etc/permissions/com.qualcomm.qti.imscmservice-V2.0-java.xml
 system_ext/etc/permissions/com.qualcomm.qti.imscmservice-V2.1-java.xml
 system_ext/etc/permissions/com.qualcomm.qti.imscmservice-V2.2-java.xml
 system_ext/etc/permissions/com.qualcomm.qti.imscmservice.xml
--system_ext/framework/com.qualcomm.qti.imscmservice-V2.0-java.jar
--system_ext/framework/com.qualcomm.qti.imscmservice-V2.1-java.jar
--system_ext/framework/com.qualcomm.qti.imscmservice-V2.2-java.jar
--system_ext/framework/com.qualcomm.qti.uceservice-V2.0-java.jar
--system_ext/framework/com.qualcomm.qti.uceservice-V2.1-java.jar
--system_ext/framework/com.qualcomm.qti.uceservice-V2.2-java.jar
--system_ext/framework/vendor.qti.ims.callcapability-V1.0-java.jar
--system_ext/framework/vendor.qti.ims.callinfo-V1.0-java.jar
--system_ext/framework/vendor.qti.ims.factory-V1.0-java.jar
--system_ext/framework/vendor.qti.ims.factory-V1.1-java.jar
--system_ext/framework/vendor.qti.ims.rcsconfig-V1.0-java.jar
--system_ext/framework/vendor.qti.ims.rcsconfig-V1.1-java.jar
--system_ext/framework/vendor.qti.ims.rcsconfig-V2.0-java.jar
--system_ext/framework/vendor.qti.ims.rcsconfig-V2.1-java.jar
-system_ext/lib/com.qualcomm.qti.imscmservice@1.0.so
-system_ext/lib/com.qualcomm.qti.imscmservice@2.0.so
-system_ext/lib/com.qualcomm.qti.imscmservice@2.1.so
-system_ext/lib/com.qualcomm.qti.imscmservice@2.2.so
-system_ext/lib/com.qualcomm.qti.uceservice@2.0.so
-system_ext/lib/com.qualcomm.qti.uceservice@2.1.so
-system_ext/lib/com.qualcomm.qti.uceservice@2.2.so
-system_ext/lib/lib-imsvideocodec.so
-system_ext/lib/lib-imsvt.so
-system_ext/lib/lib-imsvtextutils.so
-system_ext/lib/lib-imsvtutils.so
-system_ext/lib/libdiag_system.so
-system_ext/lib/libimscamera_jni.so
-system_ext/lib/libimsmedia_jni.so
-system_ext/lib/vendor.qti.ims.callcapability@1.0.so
-system_ext/lib/vendor.qti.ims.callinfo@1.0.so
-system_ext/lib/vendor.qti.ims.factory@1.0.so
-system_ext/lib/vendor.qti.ims.factory@1.1.so
-system_ext/lib/vendor.qti.ims.rcsconfig@1.0.so
-system_ext/lib/vendor.qti.ims.rcsconfig@1.1.so
-system_ext/lib/vendor.qti.ims.rcsconfig@2.0.so
-system_ext/lib/vendor.qti.ims.rcsconfig@2.1.so
-system_ext/lib/vendor.qti.imsrtpservice@3.0.so
+system_ext/framework/com.qualcomm.qti.imscmservice-V2.0-java.jar
+system_ext/framework/com.qualcomm.qti.imscmservice-V2.1-java.jar
+system_ext/framework/com.qualcomm.qti.imscmservice-V2.2-java.jar
+system_ext/framework/com.qualcomm.qti.uceservice-V2.0-java.jar
+system_ext/framework/com.qualcomm.qti.uceservice-V2.1-java.jar
+system_ext/framework/com.qualcomm.qti.uceservice-V2.2-java.jar
+system_ext/framework/vendor.qti.ims.callcapability-V1.0-java.jar
+system_ext/framework/vendor.qti.ims.callinfo-V1.0-java.jar
+system_ext/framework/vendor.qti.ims.factory-V1.0-java.jar
+system_ext/framework/vendor.qti.ims.factory-V1.1-java.jar
+system_ext/framework/vendor.qti.ims.rcsconfig-V1.0-java.jar
+system_ext/framework/vendor.qti.ims.rcsconfig-V1.1-java.jar
+system_ext/framework/vendor.qti.ims.rcsconfig-V2.0-java.jar
+system_ext/framework/vendor.qti.ims.rcsconfig-V2.1-java.jar
 system_ext/lib64/com.qualcomm.qti.imscmservice@1.0.so
 system_ext/lib64/com.qualcomm.qti.imscmservice@2.0.so
 system_ext/lib64/com.qualcomm.qti.imscmservice@2.1.so
@@ -264,6 +279,9 @@ system_ext/lib64/vendor.qti.hardware.scve.objecttracker@1.0-adapter-helper.so
 system_ext/lib64/vendor.qti.hardware.scve.objecttracker@1.0.so
 system_ext/lib64/vendor.qti.hardware.scve.panorama@1.0-adapter-helper.so
 system_ext/lib64/vendor.qti.hardware.scve.panorama@1.0.so
+
+# Soter Service
+-app/SoterService/SoterService.apk
 
 # WFD
 -framework/WfdCommon.jar
@@ -303,7 +321,6 @@ system_ext/lib64/libwfduibcsink.so
 system_ext/lib64/libwfduibcsinkinterface.so
 system_ext/lib64/libwfduibcsrc.so
 system_ext/lib64/libwfduibcsrcinterface.so
-system_ext/priv-app/WfdService/lib/arm64/libwfdnative.so
 -system_ext/priv-app/WfdService/WfdService.apk
 
 # WiFi
@@ -346,9 +363,7 @@ lib64/vendor.xiaomi.hardware.vibratorfeature@1.0.so
 -system_ext/app/colorservice/colorservice.apk
 -system_ext/app/com.qualcomm.qti.services.secureui/com.qualcomm.qti.services.secureui.apk
 -system_ext/app/com.qualcomm.qti.services.systemhelper/com.qualcomm.qti.services.systemhelper.apk
-system_ext/app/com.qualcomm.qti.services.systemhelper/lib/arm64/libsystemhelper_jni.so
 -system_ext/app/ConfURIDialer/ConfURIDialer.apk
--system_ext/app/DeviceInfo/DeviceInfo.apk
 -system_ext/app/DeviceStatisticsService/DeviceStatisticsService.apk
 -system_ext/app/DynamicDDSService/DynamicDDSService.apk
 -system_ext/app/PerformanceMode/PerformanceMode.apk
@@ -386,17 +401,13 @@ system_ext/etc/init/init.qti.bt.logger.rc
 system_ext/etc/init/perfservice.rc
 system_ext/etc/init/qspmsvc.rc
 system_ext/etc/init/vendor.qti.hardware.qccsyshal@1.0-service.rc
-system_ext/etc/permissions/android.software.verified_boot.xml
-system_ext/etc/permissions/com.android.hotwordenrollment.common.util.xml
 system_ext/etc/permissions/com.qti.media.secureprocessor.xml
 system_ext/etc/permissions/com.qualcomm.qmapbridge.xml
 system_ext/etc/permissions/com.qualcomm.qti.izattools.xml
 system_ext/etc/permissions/embms-noship_product_privapp_permissions_qti.xml
 system_ext/etc/permissions/lpa.xml
 system_ext/etc/permissions/privapp-permissions-com.beyondGnssService.location.xml
-system_ext/etc/permissions/privapp-permissions-google-se.xml
 system_ext/etc/permissions/privapp-permissions-miui-settings.xml
-system_ext/etc/permissions/privapp-permissions-qti-system-ext.xml
 system_ext/etc/permissions/RemoteSimlock.xml
 system_ext/etc/permissions/RemoteSimlockManager.xml
 system_ext/etc/permissions/telephony_system-ext_privapp-permissions-qti.xml
@@ -406,7 +417,6 @@ system_ext/etc/permissions/uimremoteclient.xml
 system_ext/etc/permissions/uimremoteserver.xml
 system_ext/etc/permissions/UimService.xml
 system_ext/etc/permissions/wfd-system-ext-privapp-permissions-qti.xml
-system_ext/etc/public.libraries-qti.txt
 system_ext/etc/qvr/cfg/339/0/65536/mtp855.txt
 system_ext/etc/qvr/cfg/339/0/65536/mtp855_6dof_config.xml
 system_ext/etc/qvr/cfg/341/2/65536/svr845.txt
@@ -424,9 +434,7 @@ system_ext/etc/seccomp_policy/perfservice.policy
 system_ext/etc/seccomp_policy/qvr@2.0.policy
 system_ext/etc/seccomp_policy/wfdservice.policy
 system_ext/etc/spn-conf.xml
-system_ext/etc/sysconfig/qti_whitelist_system_ext.xml
 -system_ext/framework/ActivityExt.jar
--system_ext/framework/com.android.hotwordenrollment.common.util.jar
 -system_ext/framework/com.qti.media.secureprocessor.jar
 -system_ext/framework/qmapbridge.jar
 -system_ext/framework/qti-telephony-hidl-wrapper.jar
@@ -691,7 +699,5 @@ system_ext/lib64/vendor.qti.voiceprint@1.0.so
 -system_ext/priv-app/beyondGnssService/beyondGnssService.apk
 -system_ext/priv-app/CarrierConfig/CarrierConfig.apk
 -system_ext/priv-app/CellBroadcastAppPlatform/CellBroadcastAppPlatform.apk
-system_ext/priv-app/ims/lib/arm64/libimscamera_jni.so
-system_ext/priv-app/ims/lib/arm64/libimsmedia_jni.so
 -system_ext/priv-app/QAS_DVC_MSP/QAS_DVC_MSP.apk
 -system_ext/priv-app/seccamservice/seccamservice.apk

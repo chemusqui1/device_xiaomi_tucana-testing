@@ -4,7 +4,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.btstack.a2dp_offload_cap=sbc-aptx-aptxtws-aptxhd-aptxadaptive-aac-ldac \
     persist.vendor.btstack.enable.splita2dp=true \
     persist.vendor.btstack.enable.twsplus=true \
+    persist.vendor.btstack.connect.peer_earbud=true \
     persist.vendor.btstack.enable.twsplussho=true \
+    persist.vendor.bt.a2dp.mac_whitelist=false \
+    persist.vendor.btsatck.absvolfeature=true \
     ro.bluetooth.library_name=libbluetooth_qti.so \
     vendor.bluetooth.soc=cherokee
 
@@ -18,6 +21,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.camera.enableTOFInterface=TRUE \
     vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.android.camera,org.lineageos.snap
     camera.disable_zsl_mode=1
+
+# System property determining camera HAL to be used for a Video call
+# 1 is camera1
+# 2 or anything else is camera2
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.radio.VT_CAM_INTERFACE=1
 
 # CNE and DPM
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -75,8 +84,17 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Media
 PRODUCT_PROPERTY_OVERRIDES += \
+    media.stagefright.enable-player=true \
+    media.stagefright.enable-http=true \
+    media.stagefright.enable-aac=true \
+    media.stagefright.enable-qcp=true \
+    media.stagefright.enable-fma2dp=true \
+    media.stagefright.enable-scan=true \
     media.stagefright.thumbnail.prefer_hw_codecs=true \
-    media.settings.xml=/system/etc/media_profiles_vendor.xml \
+    mmp.enable.3g2=true \
+    media.aac_51_output_enabled=true \
+    mm.enable.smoothstreaming=true \
+    media.settings.xml=/vendor/etc/media_profiles_vendor.xml \
     vendor.mm.enable.qcom_parser=63963135
 
 # Memory optimizations
@@ -85,28 +103,24 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Netflix
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.netflix.bsp_rev=Q855-16947-1
+    ro.netflix.bsp_rev=Q6150-17263-1
 
 # RIL
 PRODUCT_PROPERTY_OVERRIDES += \
-    DEVICE_PROVISIONED=1 \
-    rild.libpath=/vendor/lib64/libril-qc-hal-qmi.so \
-    ril.subscription.types=RUIM \
-    ro.telephony.default_cdma_sub=0 \
-    ro.telephony.default_network=22,22 \
-    persist.dbg.volte_avail_ovr=1 \
-    persist.dbg.vt_avail_ovr=1 \
-    persist.dbg.wfc_avail_ovr=1 \
-    persist.radio.NO_STAPA=1 \
-    persist.radio.VT_HYBRID_ENABLE=1 \
-    persist.vendor.data.iwlan.enable=true \
-    persist.vendor.ims.disableADBLogs=1 \
-    persist.vendor.ims.disableIMSLogs=1 \
-    persist.vendor.radio.enable_temp_dds=true \
-    persist.vendor.radio.force_on_dc=true \
+    persist.radio.multisim.config=dsds \
+    persist.vendor.radio.apm_sim_not_pwdn=1 \
+    persist.vendor.radio.custom_ecc=1 \
+    persist.vendor.radio.data_con_rprt=1 \
+    persist.vendor.radio.data_ltd_sys_ind=1 \
+    persist.vendor.radio.force_ltd_sys_ind=1 \
+    persist.vendor.radio.manual_nw_rej_ct=1 \
+    persist.vendor.radio.mt_sms_ack=30 \
+    persist.vendor.radio.procedure_bytes=SKIP \
+    persist.vendor.radio.rat_on=combine \
     persist.vendor.radio.redir_party_num=1 \
-    persist.vendor.radio.report_codec=1 \
-    telephony.lteOnCdmaDevice=1
+    persist.vendor.radio.sib16_support=1 \
+    ro.telephony.default_cdma_sub=0 \
+    ro.telephony.default_network=22,22 
     
 # RCS
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -139,7 +153,13 @@ PRODUCT_PRODUCT_PROPERTIES += \
 
 # Vendor
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.qti.va_aosp.support=1 
+    ro.vendor.qti.va_aosp.support=1
+    
+# WLAN for Android q version
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.hardware.wlan.vendor=qcom \
+    ro.hardware.wlan.chip=39xx \
+    ro.hardware.wlan.mimo=1 
     
 # Zygote
 PRODUCT_PROPERTY_OVERRIDES += \

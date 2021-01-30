@@ -33,7 +33,18 @@ PRODUCT_PRODUCT_PROPERTIES += \
 
 # Media
 PRODUCT_PRODUCT_PROPERTIES += \
-    debug.stagefright.omx_default_rank.sw-audio=16
+    debug.stagefright.omx_default_rank.sw-audio=16 \
+    
+# Radio
+PRODUCT_PRODUCT_PROPERTIES += \
+    DEVICE_PROVISIONED=1 \
+    persist.vendor.ims.disableADBLogs=1 \
+    persist.vendor.ims.disableIMSLogs=1 \
+    persist.vendor.radio.enable_temp_dds=true \
+    persist.vendor.radio.force_on_dc=true \
+    rild.libpath=/vendor/lib64/libril-qc-hal-qmi.so \
+    ril.subscription.types=RUIM
+
     
 # Wireless display
 PRODUCT_PRODUCT_PROPERTIES += \

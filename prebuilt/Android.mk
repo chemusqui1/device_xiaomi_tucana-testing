@@ -1,8 +1,8 @@
 LOCAL_PATH := $(call my-dir)
 
-#GCamGo
+#GCamUrnyx
 include $(CLEAR_VARS)
-LOCAL_MODULE := GCamGo
+LOCAL_MODULE := UrnyxCam
 LOCAL_SRC_FILES := app/UrnyxCam/UrnyxCam.apk
 LOCAL_MODULE_CLASS := APPS
 LOCAL_PRIVILEGED_MODULE := true

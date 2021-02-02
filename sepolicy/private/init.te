@@ -16,7 +16,15 @@ allow init debugfs : dir { write };
 allow init sysfs : file { setattr };
 
 #Allow init to bind mount kernel module
- allow init system_file:dir mounton;
+allow init system_file:dir mounton;
 
 # Allow init to write to otg_switch
 allow init sysfs_usb_supply:file w_file_perms;
+
+# Allow init to write to sysfs_graphics
+allow init sysfs_graphics:file w_file_perms;
+
+allow init hal_displayfeature_xiaomi_default:binder call;
+allow init hal_fod_tucana_exec:file { execute execute_no_trans getattr map };
+allow init hal_touchfeature_xiaomi_default:binder call;
+allow init sysfs_graphics:lnk_file read;

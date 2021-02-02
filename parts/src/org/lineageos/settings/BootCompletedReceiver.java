@@ -24,7 +24,7 @@ import android.util.Log;
 
 import org.lineageos.settings.dirac.DiracUtils;
 import org.lineageos.settings.doze.DozeUtils;
-import org.lineageos.settings.fod.FodUtils;
+import org.lineageos.settings.thermal.ThermalUtils;
 
 public class BootCompletedReceiver extends BroadcastReceiver {
 
@@ -33,11 +33,9 @@ public class BootCompletedReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(final Context context, Intent intent) {
-        if (DozeUtils.isDozeEnabled(context) && DozeUtils.sensorsEnabled(context)) {
-            if (DEBUG) Log.d(TAG, "Starting Doze service");
-            DozeUtils.startService(context);
-        }
-        new DiracUtils(context).onBootCompleted();
-        FodUtils.startService(context);
+        if (DEBUG) Log.d(TAG, "Received boot completed intent");
+        DiracUtils.initialize(context);
+        DozeUtils.checkDozeService(context);
+        ThermalUtils.startService(context);
     }
 }

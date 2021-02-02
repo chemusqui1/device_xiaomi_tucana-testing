@@ -21,21 +21,14 @@ allow xiaomi_settings system_app_data_file:{ file lnk_file } create_file_perms;
 # Allow xiaomi_settings to find hal_displayfeature_xiaomi_hwservice
 allow xiaomi_settings hal_displayfeature_xiaomi_hwservice:hwservice_manager find;
 
-# Allow xiaomi_settings to find hal_motor_hwservice:hwservice_manager
-allow xiaomi_settings hal_motor_hwservice:hwservice_manager find;
-
 #Allow xiaomi_settings to find hal_touchfeature_hwservice:hwservice_manager
 allow xiaomi_settings hal_touchfeature_xiaomi_hwservice:hwservice_manager find;
-
 
 # Allow binder communication with hal_displayfeature_xiaomi_default
 binder_call(xiaomi_settings, hal_displayfeature_xiaomi_default)
 
 # Allow binder communication with hal_touchfeature_xiaomi_default
 binder_call(xiaomi_settings, hal_touchfeature_xiaomi_default)
-
-# Allow binder communication with hal_motor_default
-binder_call(xiaomi_settings, hal_motor_default)
 
 # Allow binder communication with gpuservice
 binder_call(xiaomi_settings, gpuservice)
@@ -52,11 +45,11 @@ allow xiaomi_settings sysfs_graphics:file rw_file_perms;
 allow xiaomi_settings sysfs_leds:dir search;
 allow xiaomi_settings sysfs_leds:file rw_file_perms;
 
-# Allow xiaomi_settings binder to call hal_motor
-allow xiaomi_settings hal_motor_default:binder { call };
-
 # Allow xiaomi_settings to turn sysfs_leds
 allow xiaomi_settings sysfs_leds:dir { search };
+
+# Allow xiaomi_settings to write to sysfs_thermal
+allow xiaomi_settings sysfs_thermal:file w_file_perms;
 
 # Allow xiaomi_settings to turn vendor sysfs_graphics
 allow xiaomi_settings vendor_sysfs_graphics:dir { search };
@@ -71,4 +64,11 @@ allow xiaomi_settings system_app_data_file:dir { remove_name };
 allow xiaomi_settings system_app_data_file:file { rename };
 allow xiaomi_settings system_app_data_file:file { setattr };
 allow xiaomi_settings system_app_data_file:file { unlink };
+
+allow xiaomi_settings activity_service:service_manager find;
+allow xiaomi_settings activity_task_service:service_manager find;
+allow xiaomi_settings audioserver_service:service_manager find;
+allow xiaomi_settings sysfs_thermal:file write;
+allow xiaomi_settings system_app_data_file:file { getattr open read };
+
 

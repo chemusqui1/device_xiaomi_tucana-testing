@@ -39,14 +39,14 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_policy_engine_configuration.xml:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/etc/audio_policy_engine_configuration.xml \
     $(LOCAL_PATH)/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/etc/audio_policy_configuration.xml \
     $(LOCAL_PATH)/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/etc/audio/audio_policy_configuration.xml \
-       frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration.xml:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/etc/a2dp_audio_policy_configuration.xml \
+    frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration.xml:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/etc/a2dp_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/a2dp_in_audio_policy_configuration.xml:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/etc/a2dp_in_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/etc/usb_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/bluetooth_audio_policy_configuration.xml:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/etc/bluetooth_audio_policy_configuration.xml
 
 # ANT+
 PRODUCT_PACKAGES += \
-    AntHalService
+    AntHalService-Soong
 
 # Bluetooth
 PRODUCT_PACKAGES += \
@@ -61,8 +61,7 @@ TARGET_SCREEN_WIDTH := 1080
 
 # Camera
 PRODUCT_PACKAGES += \
-    vendor.qti.hardware.camera.device@1.0 \
-    Snap
+    UrnyxCam
     
 # Configstore
 PRODUCT_PACKAGES += \
@@ -85,12 +84,22 @@ PRODUCT_PACKAGES += \
     libdisplayconfig \
     libqdMetaData \
     libqdMetaData.system \
-    libvulkan
+    libvulkan \
+    vendor.display.config@1.0 \
+    vendor.display.config@1.1 \
+    vendor.display.config@1.2 \
+    vendor.display.config@1.3 \
+    vendor.display.config@1.5 \
+    vendor.display.config@2.0
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/qdcm_calib_data_xiaomi_f4_36_02_0b_fhd_cmd_dsi_panel.xml:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/etc/qdcm_calib_data_xiaomi_f4_36_02_0b_fhd_cmd_dsi_panel.xml \
     $(LOCAL_PATH)/configs/qdcm_calib_data_xiaomi_f4_41_06_0a_fhd_cmd_dsi_panel.xml:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/etc/qdcm_calib_data_xiaomi_f4_41_06_0a_fhd_cmd_dsi_panel.xml \
     $(LOCAL_PATH)/configs/qdcm_calib_data_xiaomi_f4_42_06_0c_fhd_cmd_dsi_panel.xml:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/etc/qdcm_calib_data_xiaomi_f4_42_06_0c_fhd_cmd_dsi_panel.xml
+
+# Face Unlock
+PRODUCT_PACKAGES += \
+    FaceUnlockService
 
 # fastbootd
 PRODUCT_PACKAGES += \
@@ -105,34 +114,16 @@ PRODUCT_COPY_FILES += \
 
 TARGET_HAS_FOD := true
 
-# FIXME: master: compat for libprotobuf
-# See https://android-review.googlesource.com/c/platform/prebuilts/vndk/v28/+/1109518
-PRODUCT_PACKAGES += \
-    libprotobuf-cpp-full-vendorcompat
-
-# GPU Firmware
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/gpu/a612_rgmu.bin:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/firmware/a612_rgmu.bin \
-    $(LOCAL_PATH)/prebuilt/gpu/a612_zap.b00:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/firmware/a612_zap.b00 \
-    $(LOCAL_PATH)/prebuilt/gpu/a612_zap.b01:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/firmware/a612_zap.b01 \
-    $(LOCAL_PATH)/prebuilt/gpu/a612_zap.b02:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/firmware/a612_zap.b02 \
-    $(LOCAL_PATH)/prebuilt/gpu/a612_zap.elf:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/firmware/a612_zap.elf \
-    $(LOCAL_PATH)/prebuilt/gpu/a612_zap.mdt:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/firmware/a612_zap.mdt \
-    $(LOCAL_PATH)/prebuilt/gpu/a615_zap.b00:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/firmware/a615_zap.b00 \
-    $(LOCAL_PATH)/prebuilt/gpu/a615_zap.b01:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/firmware/a615_zap.b01 \
-    $(LOCAL_PATH)/prebuilt/gpu/a615_zap.b02:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/firmware/a615_zap.b02 \
-    $(LOCAL_PATH)/prebuilt/gpu/a615_zap.elf:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/firmware/a615_zap.elf \
-    $(LOCAL_PATH)/prebuilt/gpu/a615_zap.mdt:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/firmware/a615_zap.mdt \
-    $(LOCAL_PATH)/prebuilt/gpu/a618_gmu.bin:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/firmware/a618_gmu.bin \
-    $(LOCAL_PATH)/prebuilt/gpu/a630_gmu.bin:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/firmware/a630_gmu.bin \
-    $(LOCAL_PATH)/prebuilt/gpu/a630_sqe.fw:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/firmware/a630_sqe.fw \
-    $(LOCAL_PATH)/prebuilt/gpu/a640_gmu.bin:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/firmware/a640_gmu.bin
-
 # FM
 PRODUCT_PACKAGES += \
     FM2 \
     libqcomfm_jni \
     qcom.fmradio
+    
+# Framework detect
+PRODUCT_PACKAGES += \
+    libqti_vndfwk_detect \
+    libvndfwk_detect_jni.qti
 
 # fstab
 PRODUCT_COPY_FILES += \
@@ -145,10 +136,10 @@ PRODUCT_PACKAGES += \
     libhidltransport \
     libhwbinder
     
-# Hotword Enrollment
+# HotwordEnrollement
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/permissions/privapp-permissions-hotword.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-hotword.xml \
-    $(LOCAL_PATH)/configs/sysconfig/hotword-hiddenapi-package-whitelist.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/hotword-hiddenapi-package-whitelist.xml
+    $(LOCAL_PATH)/configs/privapp-permissions-hotword.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-hotword.xml \
+    $(LOCAL_PATH)/configs/com.android.hotwordenrollment.common.util.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/com.android.hotwordenrollment.common.util.xml
 
 # IFAA manager
 PRODUCT_PACKAGES += \
@@ -156,6 +147,12 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_BOOT_JARS += \
     org.ifaa.android.manager
+    
+# IMS
+PRODUCT_PACKAGES += \
+    com.android.ims.rcsmanager \
+    PresencePolling \
+    RcsService
 
 # Init
 PRODUCT_PACKAGES += \
@@ -180,7 +177,7 @@ PRODUCT_PACKAGES += \
 # Media
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media_profiles_vendor.xml:system/etc/media_profiles_vendor.xml
-
+    
 # Net
 PRODUCT_PACKAGES += \
     netutils-wrapper-1.0
@@ -210,20 +207,15 @@ PRODUCT_PACKAGES += \
 
 # Permissions
 PRODUCT_COPY_FILES += \
-   frameworks/native/data/etc/android.hardware.telephony.ims.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.telephony.ims.xml \
    frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/handheld_core_hardware.xml
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.2-service.tucana
+    android.hardware.power-service.tucana
 
 # Properties
 -include $(LOCAL_PATH)/system_prop.mk
 -include $(LOCAL_PATH)/product_prop.mk
-    
-# Ril
-PRODUCT_PACKAGES += \
-    android.hardware.radio@1.4
     
 # Sensor Configuration
 PRODUCT_COPY_FILES += \
@@ -236,7 +228,12 @@ PRODUCT_HOST_PACKAGES += \
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
+    hardware/xiaomi \
     vendor/nxp/opensource/sn100x
+    
+# System Helper
+PRODUCT_PACKAGES += \
+    vendor.qti.hardware.systemhelper@1.0
 
 # Telephony
 PRODUCT_PACKAGES += \
@@ -246,50 +243,25 @@ PRODUCT_PACKAGES += \
     qti_telephony_hidl_wrapper.xml \
     qti-telephony-utils \
     qti_telephony_utils.xml \
-    telephony-ext
-
+    telephony-ext \
+    CellBroadcastReceiver \
+    android.hardware.radio@1.5 \
+    android.hardware.radio.config@1.1 \
+    android.hardware.secure_element@1.1 \
+    libjson \
+    libprotobuf-cpp-full \
+    libxml2
+    
 PRODUCT_BOOT_JARS += \
-    telephony-ext
-    
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/permissions/privapp-permissions-qti.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-qti.xml
-    
-# Thermal
-PRODUCT_PACKAGES += \
-    android.hardware.thermal@2.0
+    telephony-ext  
 
 # TextClassifier
 PRODUCT_PACKAGES += \
     textclassifier.bundle1
-
-# Vendor Overlays
-PRODUCT_PACKAGES += \
-    AospFrameworkResOverlay \
-    AospWifiResOverlay \
-    CarrierConfigResCommon \
-    CellBroadcastReceiverResCommon \
-    DevicesAndroidOverlay \
-    DevicesOverlay \
-    DocumentsUIOverlay \
-    ElderlyNavigationBarOverlay \
-    FrameworksResCommon \
-    FrameworksResTarget \
-    GestureLineOverlay \
-    MccMncOverlay \
-    MiuiBiometricResOverlay \
-    MiuiBluetoothOverlay \
-    MiuiFrameworkResOverlay \
-    MiuiSettingsResOverlay \
-    MiuiSystemUIResOverlay \
-    OptInAppOverlay \
-    SystemUIResCommon \
-    TelecommResCommon \
-    TelephonyResCommon
     
-# VNDK
-PRODUCT_COPY_FILES += \
-    prebuilts/vndk/v29/arm64/arch-arm-armv8-a/shared/vndk-sp/libcutils.so:$(TARGET_COPY_OUT_SYSTEM)/lib/libcutils-v29.so \
-    prebuilts/vndk/v29/arm64/arch-arm64-armv8-a/shared/vndk-sp/libcutils.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libcutils-v29.so
+# Thermal
+PRODUCT_PACKAGES += \
+    android.hardware.thermal@2.0
     
 # WiFi
 PRODUCT_PACKAGES += \

@@ -5,11 +5,11 @@
 #
 
 BOARD_VENDOR := xiaomi
-BUILD_BROKEN_DUP_RULES := true
-BUILD_BROKEN_USES_BUILD_COPY_HEADERS := true
 
 DEVICE_PATH := device/xiaomi/tucana
 TARGET_SPECIFIC_HEADER_PATH := $(DEVICE_PATH)/include
+
+BUILD_BROKEN_DUP_RULES := true
 
 # Compile libhwui in perfomance mode
 HWUI_COMPILE_FOR_PERF := true
@@ -45,8 +45,14 @@ TARGET_NO_BOOTLOADER := true
 DEXPREOPT_GENERATE_APEX_IMAGE := true
 
 # Audio
+AUDIO_FEATURE_ENABLED_AAC_ADTS_OFFLOAD := true
+AUDIO_FEATURE_ENABLED_EXTN_FORMATS := true
+AUDIO_FEATURE_ENABLED_FM_POWER_OPT := true
+AUDIO_FEATURE_ENABLED_HDMI_SPK := true
+AUDIO_FEATURE_ENABLED_PROXY_DEVICE := true
 USE_CUSTOM_AUDIO_POLICY := 1
 USE_XML_AUDIO_POLICY_CONF := 1
+
 
 # Battery
 BOARD_GLOBAL_CFLAGS += -DBATTERY_REAL_INFO
@@ -68,6 +74,7 @@ TARGET_CAMERA_BOOTTIME_TIMESTAMP := true
 # Display
 TARGET_USES_HWC2 := true
 TARGET_HAS_HDR_DISPLAY := true
+TARGET_HAS_WIDE_COLOR_DISPLAY := true
 TARGET_SCREEN_DENSITY := 440
 
 # DRM
@@ -88,8 +95,11 @@ BOARD_HAVE_QCOM_FM := true
 TARGET_SURFACEFLINGER_FOD_LIB := //$(DEVICE_PATH):libfod_extension.tucana
 TARGET_USES_FOD_ZPOS := true
 
+# FOD key for InputDispatcher to skip
+TARGET_INPUTDISPATCHER_SKIP_EVENT_KEY := 338
+
 # HIDL
-DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
+DEVICE_FRAMEWORK_MANIFEST_FILE := $(DEVICE_PATH)/framework_manifest.xml
 DEVICE_MATRIX_FILE := $(DEVICE_PATH)/compatibility_matrix.xml
 
 # Init
@@ -134,12 +144,6 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 57453555712
 BOARD_CACHEIMAGE_PARTITION_SIZE := 268435456
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 4755517440
 
-# Power
-TARGET_OVERLAYS_POWERHAL := true
-TARGET_USES_NON_LEGACY_POWER := true
-TARGET_USES_INTERACTION_BOOST := true
-TARGET_TAP_TO_WAKE_NODE := "/dev/input/event4"
-
 # Recovery
 BOARD_INCLUDE_RECOVERY_DTBO := true
 BOARD_USES_RECOVERY_AS_BOOT := false
@@ -157,7 +161,7 @@ OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)
 
 # RIL
-TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
+ENABLE_VENDOR_RIL_SERVICE := true
 
 # System_As_Root
 BOARD_SUPPRESS_SECURE_ERASE := true
@@ -173,12 +177,17 @@ BOARD_PLAT_PRIVATE_SEPOLICY_DIR += \
 
 BOARD_PLAT_PUBLIC_SEPOLICY_DIR += \
     device/qcom/sepolicy_vndr/generic/public \
-    device/qcom/sepolicy_vndr/qva/public
+    device/qcom/sepolicy_vndr/qva/public \
+    device/qcom/sepolicy/qva/public \
+    device/qcom/sepolicy/qva/public/attribute
+    
+PRODUCT_PUBLIC_SEPOLICY_DIRS += \
+    device/qcom/sepolicy/generic/product/public \
+    device/qcom/sepolicy/qva/product/public
 
-# Power
-TARGET_OVERLAYS_POWERHAL := true
-TARGET_USES_NON_LEGACY_POWER := true
-TARGET_TAP_TO_WAKE_NODE := "/dev/input/event4"
+PRODUCT_PRIVATE_SEPOLICY_DIRS += \
+    device/qcom/sepolicy/generic/product/private \
+    device/qcom/sepolicy/qva/product/private    
 
 # Treble
 BUILD_WITHOUT_VENDOR := true

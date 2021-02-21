@@ -4,15 +4,6 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-# This contains the module build definitions for the hardware-specific
-# components for this device.
-#
-# As much as possible, those components should be built unconditionally,
-# with device-specific names to avoid collisions, to avoid device-specific
-# bitrot and build breakages. Building a component unconditionally does
-# *not* include it on all devices, so it is safe even with hardware-specific
-# components.
-
 LOCAL_PATH := $(call my-dir)
 
 ifeq ($(TARGET_DEVICE),tucana)
@@ -29,4 +20,13 @@ $(IMS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	$(hide) ln -sf /system_ext/lib64/$(notdir $@) $@
 
 ALL_DEFAULT_INSTALLED_MODULES += $(IMS_SYMLINKS)
+
+METADATA_SYMLINKS := $(TARGET_ROOT_OUT)/metadata
+$(METADATA_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "Creating $@"
+	@mkdir -p $(TARGET_ROOT_OUT)/metadata
+	$(hide) ln -sf /data/apex $@/apex
+
+ALL_DEFAULT_INSTALLED_MODULES += $(METADATA_SYMLINKS)
+
 endif

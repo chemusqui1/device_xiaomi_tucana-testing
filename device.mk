@@ -31,7 +31,6 @@ PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 # Audio
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
-    tinymix \
     libaacwrapper \
     vendor.qti.hardware.audiohalext@1.0
 
@@ -254,10 +253,6 @@ PRODUCT_PACKAGES += \
     
 PRODUCT_BOOT_JARS += \
     telephony-ext  
-
-# TextClassifier
-PRODUCT_PACKAGES += \
-    textclassifier.bundle1
     
 # Thermal
 PRODUCT_PACKAGES += \

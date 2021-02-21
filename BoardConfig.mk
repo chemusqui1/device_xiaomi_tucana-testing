@@ -9,6 +9,7 @@ BOARD_VENDOR := xiaomi
 DEVICE_PATH := device/xiaomi/tucana
 TARGET_SPECIFIC_HEADER_PATH := $(DEVICE_PATH)/include
 
+BUILD_BROKEN_USES_BUILD_COPY_HEADERS := true
 BUILD_BROKEN_DUP_RULES := true
 
 # Compile libhwui in perfomance mode
@@ -180,14 +181,6 @@ BOARD_PLAT_PUBLIC_SEPOLICY_DIR += \
     device/qcom/sepolicy_vndr/qva/public \
     device/qcom/sepolicy/qva/public \
     device/qcom/sepolicy/qva/public/attribute
-    
-PRODUCT_PUBLIC_SEPOLICY_DIRS += \
-    device/qcom/sepolicy/generic/product/public \
-    device/qcom/sepolicy/qva/product/public
-
-PRODUCT_PRIVATE_SEPOLICY_DIRS += \
-    device/qcom/sepolicy/generic/product/private \
-    device/qcom/sepolicy/qva/product/private    
 
 # Treble
 BUILD_WITHOUT_VENDOR := true

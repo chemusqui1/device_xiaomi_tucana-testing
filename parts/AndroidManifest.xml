@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
      Copyright (C) 2015-2016 The CyanogenMod Project
-                   2017-2020 The LineageOS Project
+                   2017-2018 The LineageOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -17,20 +17,19 @@
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.lineageos.settings"
+    android:sharedUserId="android.uid.system"
     android:versionCode="1"
-    android:versionName="1.0"
-    android:sharedUserId="android.uid.system">
+    android:versionName="1.0">
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <protected-broadcast android:name="com.android.systemui.doze.pulse" />
 
     <uses-sdk
         android:minSdkVersion="24"
-        android:targetSdkVersion="24"/>
+        android:targetSdkVersion="24" />
 
     <application
         android:label="@string/device_settings_app_name"
@@ -50,27 +49,66 @@
             <intent-filter>
                 <action android:name="com.android.settings.action.IA_SETTINGS" />
             </intent-filter>
-            <meta-data android:name="com.android.settings.category"
-                       android:value="com.android.settings.category.ia.sound" />
+            <meta-data
+                android:name="com.android.settings.category"
+                android:value="com.android.settings.category.ia.sound" />
+            <meta-data
+                android:name="com.android.settings.summary"
+                android:resource="@string/dirac_summary" />
         </activity>
 
-        <service android:name=".doze.DozeService"
-                 android:permission="XiaomiDozeService">
+        <service
+            android:name=".doze.DozeService"
+            android:permission="XiaomiDozeService">
+        </service>
+
+        <service
+            android:name=".fod.FodService"
+            android:permission="FodService">
+        </service>
+
+        <service
+            android:name=".fpsinfo.FPSInfoService"
+            android:exported="false">
+        </service>
+
+        <service
+            android:name=".fpsinfo.FPSTileService"
+            android:icon="@drawable/ic_fps"
+            android:label="@string/fps_info_title"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action
+                    android:name="android.service.quicksettings.action.QS_TILE"/>
+            </intent-filter>
         </service>
 
         <activity
             android:name=".doze.DozeSettingsActivity"
             android:label="@string/ambient_display_title"
             android:theme="@style/Theme.Main">
+        </activity>
+
+        <activity
+            android:name=".display.DcDimmingSettingsActivity"
+            android:label="@string/dc_dimming_enable_title"
+            android:theme="@style/Theme.Main">
             <intent-filter>
-                <action android:name="org.lineageos.settings.device.DOZE_SETTINGS" />
-                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="com.android.settings.action.IA_SETTINGS" />
             </intent-filter>
+
+            <meta-data
+                android:name="com.android.settings.category"
+                android:value="com.android.settings.category.ia.display" />
+            <meta-data
+                android:name="com.android.settings.summary"
+                android:resource="@string/dc_dimming_enable_summary" />
         </activity>
 
         <activity
             android:name=".thermal.ThermalActivity"
             android:label="@string/thermal_title"
+            android:icon="@drawable/ic_thermal_settings"
             android:theme="@style/Theme.Main">
             <intent-filter>
                 <action android:name="com.android.settings.action.IA_SETTINGS" />
@@ -89,6 +127,16 @@
         <service
             android:name=".thermal.ThermalService"
             android:permission="ThermalService">
+        </service>
+
+        <service
+            android:name=".display.tile.DcDimmingTile"
+            android:icon="@drawable/ic_dimming_off"
+            android:label="@string/dc_dimming_tile_title"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
         </service>
 
     </application>

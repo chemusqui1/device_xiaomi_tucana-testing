@@ -1,12 +1,12 @@
 /**
  * Copyright (C) 2020 The LineageOS Project
- * <p>
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * <p>
- * http://www.apache.org/licenses/LICENSE-2.0
- * <p>
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -16,6 +16,7 @@
 package org.lineageos.settings.thermal;
 
 import android.annotation.Nullable;
+import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
@@ -25,6 +26,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -77,11 +79,21 @@ public class ThermalSettingsFragment extends PreferenceFragment
         mAllPackagesAdapter = new AllPackagesAdapter(getActivity());
 
         mThermalUtils = new ThermalUtils(getActivity());
+        getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            getActivity().onBackPressed();
+            return true;
+        }
+        return false;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+            Bundle savedInstanceState) {
         return inflater.inflate(R.layout.thermal_layout, container, false);
     }
 
@@ -103,6 +115,8 @@ public class ThermalSettingsFragment extends PreferenceFragment
     @Override
     public void onResume() {
         super.onResume();
+        final ActionBar actionBar = getActivity().getActionBar();
+        actionBar.setTitle(getResources().getString(R.string.thermal_title));
         rebuild();
     }
 
@@ -226,12 +240,14 @@ public class ThermalSettingsFragment extends PreferenceFragment
         private ImageView icon;
         private View rootView;
         private ImageView stateIcon;
+        private ImageView touchIcon;
 
         private ViewHolder(View view) {
             this.title = view.findViewById(R.id.app_name);
             this.mode = view.findViewById(R.id.app_mode);
             this.icon = view.findViewById(R.id.app_icon);
             this.stateIcon = view.findViewById(R.id.state);
+            this.touchIcon = view.findViewById(R.id.touch);
             this.rootView = view;
 
             view.setTag(this);
@@ -348,19 +364,41 @@ public class ThermalSettingsFragment extends PreferenceFragment
                 return holder.rootView;
             }
 
+            holder.touchIcon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    TouchSettingsFragment touchSettingsFragment = new TouchSettingsFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("appName", entry.label);
+                    bundle.putString("packageName", entry.info.packageName);
+                    touchSettingsFragment.setArguments(bundle);
+                    getActivity().getFragmentManager().beginTransaction()
+                            .replace(android.R.id.content, touchSettingsFragment, "touchSettingsFragment")
+                            .addToBackStack(null)
+                            .commit();
+                }
+            });
+
             holder.title.setText(entry.label);
             mApplicationsState.ensureIcon(entry);
             holder.icon.setImageDrawable(entry.icon);
             holder.mode.setSelection(mThermalUtils.getStateForPackage(entry.info.packageName),
                     false);
             holder.mode.setTag(entry);
-            holder.stateIcon.setImageResource(getStateDrawable(
-                    mThermalUtils.getStateForPackage(entry.info.packageName)));
+            int stateIconDawable = getStateDrawable(mThermalUtils.getStateForPackage(
+                    entry.info.packageName));
+            if (stateIconDawable == R.drawable.ic_thermal_gaming ||
+                    stateIconDawable == R.drawable.ic_thermal_benchmark) {
+                holder.touchIcon.setVisibility(View.VISIBLE);
+            } else {
+                holder.touchIcon.setVisibility(View.GONE);
+            }
+            holder.stateIcon.setImageResource(stateIconDawable);
             return holder.rootView;
         }
 
         private void setEntries(List<ApplicationsState.AppEntry> entries,
-                                List<String> sections, List<Integer> positions) {
+                List<String> sections, List<Integer> positions) {
             mEntries = entries;
             mSections = sections.toArray(new String[sections.size()]);
             mPositions = new int[positions.size()];

@@ -225,13 +225,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.hardware.wlan.vendor=qcom \
     ro.hardware.wlan.chip=39xx \
     ro.hardware.wlan.mimo=1
-
-# USB debugging
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.usb.config=mtp,adb \
-    ro.adb.secure=0 \
-    ro.secure=0 \
-    ro.debuggable=1
     
 # Use OpenGL backend for Skia UI rendering
 PRODUCT_PRODUCT_PROPERTIES += \

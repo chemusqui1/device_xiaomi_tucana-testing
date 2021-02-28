@@ -9,7 +9,6 @@ $(call inherit-product, device/xiaomi/tucana/device.mk)
 # Inherit some common Evolution X stuff.
 EVO_BUILD_TYPE := UNOFFICIAL
 TARGET_BOOT_ANIMATION_RES := 1080
-TARGET_FACE_UNLOCK_SUPPORTED := true
 WITH_GAPPS := true
 EXTRA_FOD_ANIMATIONS := true
 $(call inherit-product, vendor/evolution/config/common_full_phone.mk)

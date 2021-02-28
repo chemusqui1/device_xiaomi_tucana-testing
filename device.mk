@@ -203,7 +203,8 @@ PRODUCT_COPY_FILES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power-service.tucana
+    android.hardware.power-service.tucana \
+    vendor.qti.hardware.perf@2.0
 
 # Properties
 -include $(LOCAL_PATH)/system_prop.mk

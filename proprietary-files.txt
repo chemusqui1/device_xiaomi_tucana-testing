@@ -443,7 +443,6 @@ system_ext/lib64/libmmrtpencoder.so
 system_ext/lib64/vendor.qti.hardware.vpp@1.1.so
 
 # Perf
--system_ext/app/PerformanceMode/PerformanceMode.apk
 -system_ext/app/workloadclassifier/workloadclassifier.apk
 system_ext/bin/perfservice
 system_ext/etc/init/perfservice.rc
@@ -455,14 +454,12 @@ system_ext/lib/libqti-perfd-client_system.so
 system_ext/lib/libqti-util_system.so
 system_ext/lib/libqti_performance.so
 system_ext/lib/libqti_workloadclassifiermodel.so
-system_ext/lib/vendor.qti.hardware.perf@2.0.so
 system_ext/lib64/libdolphin.so
 system_ext/lib64/libqti-at.so
 system_ext/lib64/libqti-perfd-client_system.so
 system_ext/lib64/libqti-util_system.so
 system_ext/lib64/libqti_performance.so
 system_ext/lib64/libqti_workloadclassifiermodel.so
-system_ext/lib64/vendor.qti.hardware.perf@2.0.so
 
 # Perf IOP
 system_ext/lib/libqti-iopd-client_system.so

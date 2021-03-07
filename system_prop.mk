@@ -26,7 +26,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.camera.sat.fallback.lux.d=50 \
     persist.vendor.camera.enableNCSService=TRUE \
     persist.vendor.camera.enableTOFInterface=TRUE \
-    vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.android.camera,org.lineageos.snap \
+    vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.android.camera,org.lineageos.snap,org.pixelexperience.faceunlock \
     camera.disable_zsl_mode=0
 
 # System property determining camera HAL to be used for a Video call

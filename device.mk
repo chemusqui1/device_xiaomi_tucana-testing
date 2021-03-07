@@ -127,11 +127,6 @@ PRODUCT_PACKAGES += \
     android.hidl.manager@1.0 \
     libhidltransport \
     libhwbinder
-    
-# HotwordEnrollement
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/privapp-permissions-hotword.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-hotword.xml \
-    $(LOCAL_PATH)/configs/com.android.hotwordenrollment.common.util.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/com.android.hotwordenrollment.common.util.xml
 
 # IFAA manager
 PRODUCT_PACKAGES += \
@@ -199,8 +194,10 @@ PRODUCT_PACKAGES += \
 
 # Permissions
 PRODUCT_COPY_FILES += \
-   frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/handheld_core_hardware.xml
-
+    frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/handheld_core_hardware.xml \
+    $(LOCAL_PATH)/configs/privapp-permissions-google-comms-suite.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-google-comms-suite.xml \
+    $(LOCAL_PATH)/configs/privapp-permissions-google-product.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-google-product.xml \
+    $(LOCAL_PATH)/configs/split-permissions-google.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/split-permissions-google.xml
 # Power
 PRODUCT_PACKAGES += \
     android.hardware.power-service.tucana \
@@ -263,9 +260,6 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     libnl
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/privapp-permissions-wfd.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-wfd.xml
 
 PRODUCT_BOOT_JARS += \
     WfdCommon

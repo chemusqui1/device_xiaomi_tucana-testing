@@ -26,7 +26,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.camera.sat.fallback.lux.d=50 \
     persist.vendor.camera.enableNCSService=TRUE \
     persist.vendor.camera.enableTOFInterface=TRUE \
-    vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.android.camera,org.lineageos.snap
+    vendor.camera.aux.packagelist=org.codeaurora.snapcam,com.android.camera,org.lineageos.snap \
+    camera.disable_zsl_mode=0
 
 # System property determining camera HAL to be used for a Video call
 # 1 is camera1
@@ -74,7 +75,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.displayfeature.dc_backlight.threshold=610 \
     persist.displayfeature.dc_backlight.enable=false \
     persist.fod.modified.dc_status=false \
-    sys.displayfeature.hbm.enable=true
+    sys.displayfeature.hbm.enable=true \
+    sys.displayfeature_hidl=true
     
 # FP
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -113,6 +115,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.fluence.speaker=true \
     persist.audio.button_jack.profile=volume \
     persist.audio.button_jack.switch=0 \
+    persist.mm.enable.prefetch=true \
     audio.deep_buffer.media=true \
     audio.offload.buffer.size.kb=32 \
     audio.offload.gapless.enabled=true \
@@ -140,6 +143,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Netflix
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.netflix.bsp_rev=Q6150-17263-1
+
+# Quick Charge
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.vendor.quick.charge=1
 
 # RIL
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -188,7 +195,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # RCS
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.rcs.supported=1
+    persist.rcs.supported=0
 
 # Sensors
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -242,3 +249,18 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Zygote
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.device_config.runtime_native.usap_pool_enabled=true
+
+# Enable app/sf phase offset as durations. The numbers below are translated from the existing
+# positive offsets by finding the duration app/sf will have with the offsets.
+# For SF the previous value was 6ms which under 16.6ms vsync time (60Hz) will leave SF with ~10.5ms
+# for each frame. For App the previous value was 2ms which under 16.6ms vsync time will leave the
+# App with ~20.5ms (16.6ms * 2 - 10.5ms - 2ms). The other values were calculated similarly.
+# Full comparison between the old vs. the new values are captured in
+# https://docs.google.com/spreadsheets/d/1a_5cVNY3LUAkeg-yL56rYQNwved6Hy-dvEcKSxp6f8k/edit
+PRODUCT_PROPERTY_OVERRIDES += debug.sf.use_phase_offsets_as_durations=1
+PRODUCT_PROPERTY_OVERRIDES += debug.sf.late.sf.duration=10500000
+PRODUCT_PROPERTY_OVERRIDES += debug.sf.late.app.duration=20500000
+PRODUCT_PROPERTY_OVERRIDES += debug.sf.early.sf.duration=21000000
+PRODUCT_PROPERTY_OVERRIDES += debug.sf.early.app.duration=16500000
+PRODUCT_PROPERTY_OVERRIDES += debug.sf.earlyGl.sf.duration=13500000
+PRODUCT_PROPERTY_OVERRIDES += debug.sf.earlyGl.app.duration=21000000

@@ -10,6 +10,7 @@ $(call inherit-product, device/xiaomi/tucana/device.mk)
 EVO_BUILD_TYPE := UNOFFICIAL
 TARGET_BOOT_ANIMATION_RES := 1080
 WITH_GAPPS := true
+TARGET_FACE_UNLOCK_SUPPORTED := true
 EXTRA_FOD_ANIMATIONS := true
 $(call inherit-product, vendor/evolution/config/common_full_phone.mk)
 

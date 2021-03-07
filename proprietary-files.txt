@@ -442,6 +442,12 @@ system_ext/lib64/libmmrtpdecoder.so
 system_ext/lib64/libmmrtpencoder.so
 system_ext/lib64/vendor.qti.hardware.vpp@1.1.so
 
+# MiCharge
+etc/permissions/vendor.xiaomi.hardware.micharge-V1.0-java-permission.xml
+-framework/vendor.xiaomi.hardware.micharge-V1.0-java.jar
+lib/vendor.xiaomi.hardware.micharge@1.0.so
+lib64/vendor.xiaomi.hardware.micharge@1.0.so
+
 # Perf
 -system_ext/app/workloadclassifier/workloadclassifier.apk
 system_ext/bin/perfservice
